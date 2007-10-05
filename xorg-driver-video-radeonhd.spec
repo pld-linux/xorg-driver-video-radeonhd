@@ -1,3 +1,5 @@
+# TODO:
+# - build conntest on all archs
 #
 # Conditional build:
 %define snap	20071005
@@ -5,7 +7,7 @@ Summary:	X.org video drivers for AMD GPG r5xx/r6xx chipsets
 Summary(pl.UTF-8):	Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx
 Name:		xorg-driver-video-radeonhd
 Version:	1.1.1
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 License:	MIT
 Group:		X11/Applications
 Source0:	xf86-video-radeonhd-%{snap}.tar.gz
@@ -49,9 +51,11 @@ Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx.
 
 %{__make}
 
+%ifarch %{ix86} %{x8664}
 %{__make} -C utils/conntest \
 	CC=%{__cc} \
 	CFLAGS="%{rpmcflags}"
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,7 +64,9 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%ifarch %{ix86} %{x8664}
 install utils/conntest/rhd_conntest $RPM_BUILD_ROOT%{_bindir}
+%endif
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
 
@@ -70,5 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc utils/conntest/README
+%ifarch %{ix86} %{x8664}
 %attr(755,root,root) %{_bindir}/rhd_conntest
+%endif
 %attr(755,root,root) %{_libdir}/xorg/modules/drivers/radeonhd_drv.so
