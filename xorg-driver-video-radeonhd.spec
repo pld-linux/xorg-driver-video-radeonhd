@@ -5,11 +5,12 @@ Summary:	X.org video drivers for AMD GPG r5xx/r6xx chipsets
 Summary(pl.UTF-8):	Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx
 Name:		xorg-driver-video-radeonhd
 Version:	1.1.1
-Release:	0.%{snap}.1
+Release:	0.%{snap}.1.1
 License:	MIT
 Group:		X11/Applications
 Source0:	xf86-video-radeonhd-%{snap}.tar.gz
 # Source0-md5:	2b17fee7267def1aae77a4c72e6e7097
+Patch0:		%{name}-conntest_Makefile.patch
 URL:		http://www.x.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -35,6 +36,7 @@ Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx.
 
 %prep
 %setup -q -n xf86-video-radeonhd
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -47,11 +49,19 @@ Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx.
 
 %{__make}
 
+cd utils/conntest
+%{__make} \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags}"
+
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install utils/conntest/rhd_conntest $RPM_BUILD_ROOT%{_bindir}
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
 
@@ -60,4 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc utils/conntest/README
+%attr(755,root,root) %{_bindir}/rhd_conntest
 %attr(755,root,root) %{_libdir}/xorg/modules/drivers/radeonhd_drv.so
