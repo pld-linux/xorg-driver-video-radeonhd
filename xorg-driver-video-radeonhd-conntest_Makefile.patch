@@ -1,0 +1,14 @@
+--- ./utils/conntest/Makefile.org	2007-09-27 22:23:48.000000000 +0000
++++ ./utils/conntest/Makefile	2007-10-05 11:57:14.000000000 +0000
+@@ -1,5 +1,10 @@
++
++CC	= gcc
++CFLAGS	= -Wall
++LDFLAGS	= 
++
+ rhd_conntest: rhd_conntest.c
+-	gcc -Wall -o rhd_conntest rhd_conntest.c -lpci -lz -I../../src/AtomBios/includes
++	${CC} ${CFLAGS} -o rhd_conntest rhd_conntest.c -lpci -lz -I../../src/AtomBios/includes
+ 
+ all: rhd_conntest
+ 
