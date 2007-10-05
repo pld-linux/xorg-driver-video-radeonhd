@@ -49,8 +49,7 @@ Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx.
 
 %{__make}
 
-cd utils/conntest
-%{__make} \
+%{__make} -C utils/conntest \
 	CC=%{__cc} \
 	CFLAGS="%{rpmcflags}"
 
