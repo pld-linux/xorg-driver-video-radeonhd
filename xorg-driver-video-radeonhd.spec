@@ -59,10 +59,6 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%ifarch %{ix86} %{x8664}
-install utils/conntest/rhd_conntest $RPM_BUILD_ROOT%{_bindir}
-%endif
-
 rm -f $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
 
 %clean
