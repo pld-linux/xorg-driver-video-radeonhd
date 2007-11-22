@@ -2,17 +2,17 @@
 # - build conntest on all archs
 #
 # Conditional build:
-%define snap	20071105
+%define snap	20071122
 Summary:	X.org video drivers for AMD GPG r5xx/r6xx chipsets
 Summary(pl.UTF-8):	Sterowniki obrazu X.org dla kart z chipsetem AMD GPG r5xx/r6xx
 Name:		xorg-driver-video-radeonhd
-Version:	0.0.2
+Version:	0.0.3
 Release:	0.%{snap}.1
 Epoch:		1
 License:	MIT
 Group:		X11/Applications
 Source0:	xf86-video-radeonhd-%{snap}.tar.bz2
-# Source0-md5:	c5cd6f1c2a7d3a0d0f6e86069d7139ed
+# Source0-md5:	04bb1bcdfe2805401b8dceef09ce58ff
 Patch0:		%{name}-am.patch
 URL:		http://www.x.org/
 BuildRequires:	autoconf >= 2.57
