@@ -1,15 +1,15 @@
 diff -urN xf86-video-radeonhd.org/utils/conntest/Makefile.am xf86-video-radeonhd/utils/conntest/Makefile.am
 --- xf86-video-radeonhd.org/utils/conntest/Makefile.am	2007-11-05 09:54:44.000000000 +0100
 +++ xf86-video-radeonhd/utils/conntest/Makefile.am	2007-11-05 10:18:04.498030747 +0100
-@@ -4,7 +4,7 @@
- 
- EXTRA_DIST = README Imakefile
- 
+@@ -7,7 +7,7 @@
+ EXTRA_PROGRAMS = rhd_conntest
+ if HAVE_PCI_PCI_H
+ if HAVE_ZLIB
 -noinst_PROGRAMS = rhd_conntest
 +bin_PROGRAMS = rhd_conntest
+ endif
+ endif
  
- # Including config.h requires xorg-config.h, so we need the XORG_CFLAGS here
- AM_CFLAGS   = @XORG_CFLAGS@ @WARN_CFLAGS@
 @@ -12,4 +12,4 @@
  
  rhd_conntest_SOURCES = rhd_conntest.c
