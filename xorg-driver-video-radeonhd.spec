@@ -92,7 +92,7 @@ Obsługiwane karty:
 %setup -q -n xf86-video-radeonhd-%{version}
 %patch0 -p1
 
-%if %{ix86} %{x8664}
+%ifarch %{ix86} %{x8664}
 ln utils/conntest/README README.conntest
 %endif
 
@@ -123,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING README*
 # x86-specific VBIOS memory access
-%if %{ix86} %{x8664}
+%ifarch %{ix86} %{x8664}
 %attr(755,root,root) %{_bindir}/rhd_conntest
 %endif
 %attr(755,root,root) %{_libdir}/xorg/modules/drivers/radeonhd_drv.so
