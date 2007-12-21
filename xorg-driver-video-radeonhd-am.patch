@@ -10,9 +10,4 @@ diff -urN xf86-video-radeonhd.org/utils/conntest/Makefile.am xf86-video-radeonhd
  endif
  endif
  
-@@ -12,4 +12,4 @@
- 
- rhd_conntest_SOURCES = rhd_conntest.c
- nodist_rhd_conntest_SOURCES = git_version.h
--rhd_conntest_LDADD   = -lz -lpci
-+rhd_conntest_LDADD   = -lpci -lz
+
