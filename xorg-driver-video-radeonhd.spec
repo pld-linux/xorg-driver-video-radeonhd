@@ -1,14 +1,13 @@
 Summary:	X.org video driver for AMD GPG r5xx/r6xx chipsets
 Summary(pl.UTF-8):	Sterownik obrazu X.org dla kart z układami AMD GPG r5xx/r6xx
 Name:		xorg-driver-video-radeonhd
-Version:	1.2.5
-Release:	2
+Version:	1.3.0
+Release:	1
 Epoch:		1
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-video-radeonhd-%{version}.tar.bz2
-# Source0-md5:	10669b08101cb6d69894cc44b47e5094
-Patch0:		%{name}-am.patch
+# Source0-md5:	7b6641aa9d836f1621b9b220ad6771b8
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -96,7 +95,6 @@ Obsługiwane karty:
 
 %prep
 %setup -q -n xf86-video-radeonhd-%{version}
-%patch0 -p1
 
 %ifarch %{ix86} %{x8664}
 ln utils/conntest/README README.conntest
@@ -128,9 +126,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING README*
-# x86-specific VBIOS memory access
-%ifarch %{ix86} %{x8664}
-%attr(755,root,root) %{_bindir}/rhd_*
-%endif
 %attr(755,root,root) %{_libdir}/xorg/modules/drivers/radeonhd_drv.so
 %{_mandir}/man4/radeonhd.4*
