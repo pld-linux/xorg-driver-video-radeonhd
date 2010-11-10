@@ -2,7 +2,7 @@ Summary:	X.org video driver for AMD GPG R5xx/R6xx/R7xx chipsets
 Summary(pl.UTF-8):	Sterownik obrazu X.org dla kart z układami AMD GPG R5xx/R6xx/R7xx
 Name:		xorg-driver-video-radeonhd
 Version:	1.3.0
-Release:	3
+Release:	4
 Epoch:		1
 License:	MIT
 Group:		X11/Applications
